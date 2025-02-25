@@ -1,0 +1,113 @@
+/* General Styles */
+/* author: William Ditlev Hanssen */
+
+/* Import of the correct font */
+@import url('http://fonts.googleapis.com/css?family=Open+Sans'); /* Import Open Sans */
+
+body {
+    margin: 0;
+    font-family: Verdana, sans-serif; /* Default font */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#header, #footer {
+    width: 100%; /* Stretch header and footer to browser width */
+}
+
+#header, #footer, #content {
+    padding: 10px; /* Ensure text is 10px from the left and right sides */
+}
+
+a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Default color unless specified */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline only on hover */
+}
+
+/* Header Styles */
+#header {
+    background-color: royalblue;
+    border: 5px outset lightblue; /* Outset border for header */
+}
+
+#header h1 {
+    color: white;
+    text-shadow: 2px 2px 2px #333; /* Shadow for header title */
+    margin-bottom: 0; /* Remove space below */
+}
+
+#header h2 {
+    font-size: 1.2em;
+    font-family: Garamond, serif; /* Garamond for subtitle */
+    font-style: italic;
+    color: white;
+    margin-top: 0; /* Remove vertical space above */
+}
+
+/* Content Styles */
+#content h2, #content h3 {
+    font-family: 'Open Sans', sans-serif; /* Open Sans for headings */
+    border-bottom: 1px solid #999999; /* Solid border for h2 */
+}
+
+#content p {
+    text-align: justify; /* Justify text */
+    text-indent: 2em; /* Indent by 2em */
+    color: #999999; /* Default text color */
+}
+
+#content p:first-line {
+    color: black; /* Highlight the first line */
+}
+
+.rank {
+    background-color: black;
+    color: white;
+    display: inline-block;
+    padding: 2px 5px; /* Add padding to rank label */
+}
+
+/* Link Styles */
+#content a {
+    color: blue; /* Links are blue */
+}
+
+/* Footer Styles */
+#footer {
+    background-color: black;
+    color: white; /* Footer text color */
+}
+
+#footer ul {
+    padding: 0;
+}
+
+#footer ul li {
+    margin-left: 20px; /* Indent list items */
+}
+
+#footer ul li:nth-child(-n+2) {
+    list-style-type: disc;
+    color: white;
+}
+
+#footer ul li:nth-child(n+3) {
+    list-style-type: circle;
+    color: white;
+}
+
+#footer ul li:nth-child(2) {
+    font-weight: bold; /* Bold second item */
+}
+
+#footer p {
+    text-align: center; /* Center copyright text */
+    color: yellow; /* Yellow text */
+    font-style: oblique; /* Oblique style */
+}

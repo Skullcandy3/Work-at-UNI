@@ -1,0 +1,227 @@
+/*William Ditlev Hanssen*/
+
+/* Header-stil */
+header {
+    height: 40px;
+    background-color: #5c5470; /* Bakgrunnsfarge fra palett */
+    position: fixed;
+    top: 0;
+    width: 94%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+}
+
+#logo {
+    height: 40px;
+    line-height: 50px;
+    font-weight: bold;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    display: inline-block
+}
+
+/* Main-stil */
+main {
+    margin-top: 100px;
+    width: 90%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 1; /* Tar opp all tilgjengelig plass mellom header og footer */
+}
+
+aside {
+    width: 300px;
+    float: right;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+aside table {
+    width: 100%;
+}
+
+/* Produkter */
+#shop-content {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+article {
+    width: 280px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+article:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.framed {
+    border: 1px solid #ddd;
+    padding: 5px;
+    position: relative;
+}
+
+.discount {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: red;
+    color: white;
+    padding: 5px;
+    font-size: 0.8em;
+}
+
+/* Footer */
+footer {
+    height: 120px;
+    border-top: 5px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    flex-shrink: 0; /* Hindrer footeren fra å krympe */
+}
+
+/* Sticky footer container */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tabell-stil for handlekurv */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+table th {
+    background-color: #f4f4f4;
+}
+
+/* Skjema-stil */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+label {
+    flex: 1;
+    text-align: right;
+    margin-right: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+button {
+    flex: 2;
+    padding: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Style for logo container */
+#logo {
+    position: relative;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5%;
+}
+
+/* Logo image styling */
+.logo-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Position behind the text */
+    object-fit: cover;
+    border-radius: 8px; /* Optional: Rounded corners */
+}
+
+/* Logo text styling */
+.logo-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7); /* Shadow for visibility */
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 5px;
+}
+
+/* Discount Tag Styling */
+.discount-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 0, 0, 0.9);
+    color: white;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 5px;
+    z-index: 10;
+}

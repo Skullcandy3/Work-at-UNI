@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="William Ditlev Hanssen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Memory Game</h1>
+        <div class="game-board">
+            <div v-for="(card, index) in cards" :key="index" 
+                 class="card" 
+                 :class="{ flipped: card.flipped, matched: card.matched }"
+                 @click="flipCard(index)">
+                <div class="card-inner">
+                    <div class="card-front"></div>
+                    <div class="card-back">{{ card.symbol }}</div>
+                </div>
+            </div>
+        </div>
+        <button @click="restartGame">Restart Game</button>
+    </div>
+    <div v-for="(card, index) in cards" 
+     :key="index" 
+     class="card" 
+     :class="{ flipped: card.flipped, matched: matchedCards.has(card.id) }"
+     @click="flipCard(index)">
+    <div class="card-inner">
+        <div class="card-front"></div>
+        <div class="card-back">{{ card.symbol }}</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

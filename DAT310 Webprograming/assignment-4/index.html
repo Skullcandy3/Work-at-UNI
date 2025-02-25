@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="William Ditlev Hanssen">
+    <title>Address Book</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Address Book</h1>
+    </header>
+
+    <main>
+        <section class="controls">
+            <input type="text" id="search" placeholder="Search by name, telephone, or email">
+            <button id="sort" onclick="sortEntries()">Sort by Name</button>
+        </section>
+
+        <section class="entry-form">
+            <h2>Add New Entry</h2>
+            <form id="add-entry-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="tel">Telephone:</label>
+                <input type="tel" id="tel">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email">
+
+                <button type="submit">Add Entry</button>
+            </form>
+        </section>
+
+        <section class="entries">
+            <h2>Contact List</h2>
+            <select id="sort-criteria">
+                <option value="name">Name</option>
+                <option value="tel">Telephone</option>
+                <option value="email">Email</option>
+            </select>
+            
+            <ul id="contact-list">
+                <!-- Entries will be displayed here -->
+            </ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

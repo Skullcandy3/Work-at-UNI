@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="William Ditlev Hanssen">
+    <title>Images put in a Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        img {
+            width: 150px;
+        }
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Image Table with 3 photos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Capellanranta_in_Kalasatama%2C_Helsinki%2C_Finland%2C_2022_November.jpg/1920px-Capellanranta_in_Kalasatama%2C_Helsinki%2C_Finland%2C_2022_November.jpg" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Capellanranta_in_Kalasatama%2C_Helsinki%2C_Finland%2C_2022_November.jpg/1920px-Capellanranta_in_Kalasatama%2C_Helsinki%2C_Finland%2C_2022_November.jpg" alt="Helsinki city center">
+                    </a>
+                </td>
+                <td>
+                    <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Capellanranta_in_Kalasatama%2C_Helsinki%2C_Finland%2C_2022_November.jpg/1920px-Capellanranta_in_Kalasatama%2C_Helsinki%2C_Finland%2C_2022_November.jpg" target="_blank">
+                        Helsinki city center. Click to view the full version.
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Bergen_Bryggen_2986.jpg/1280px-Bergen_Bryggen_2986.jpg" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Bergen_Bryggen_2986.jpg/1280px-Bergen_Bryggen_2986.jpg" alt="Bryggen i Bergen">    
+                    </a>
+                </td>
+                <td>
+                    <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Bergen_Bryggen_2986.jpg/1280px-Bergen_Bryggen_2986.jpg" target="_blank">
+                        Bryggen i Bergen. Click to view the full version.
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Boats_at_Nyhavn%2C_Copenhagen%2C_20220616_1937_6628.jpg/1280px-Boats_at_Nyhavn%2C_Copenhagen%2C_20220616_1937_6628.jpg" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Boats_at_Nyhavn%2C_Copenhagen%2C_20220616_1937_6628.jpg/1280px-Boats_at_Nyhavn%2C_Copenhagen%2C_20220616_1937_6628.jpg" alt="The port of Copenhagen">
+                    </a>
+                </td>
+                <td>
+                    <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Boats_at_Nyhavn%2C_Copenhagen%2C_20220616_1937_6628.jpg/1280px-Boats_at_Nyhavn%2C_Copenhagen%2C_20220616_1937_6628.jpg" target="_blank">
+                        The port of Copenhagen. Click to view the full version.
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
