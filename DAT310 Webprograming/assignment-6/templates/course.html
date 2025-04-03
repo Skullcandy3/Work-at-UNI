@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Emne {{ course.id }}{% endblock %}
+
+{% block content %}
+<h2>Emne: {{ course.id }} - {{ course.name }}</h2>
+
+<h3>Studentkarakterer</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Student No</th>
+            <th>Student Name</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for grade in grades %}
+        <tr>
+            <td>{{ grade.student_no }}</td>
+            <td>{{ grade.student_name }}</td>
+            <td>{{ grade.grade }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Karaktersammenfatning</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Grade</th>
+            <th>Antall</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for grade, count in summary.items() %}
+        <tr>
+            <td>{{ grade }}</td>
+            <td>{{ count }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<p>
+    <a href="{{ url_for('add_grade') }}">Legg til karakter for dette emnet</a>
+</p>
+{% endblock %}

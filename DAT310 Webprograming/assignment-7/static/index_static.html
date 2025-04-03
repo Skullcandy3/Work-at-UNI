@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Album Collection</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+    <div id="albums">
+        <h2>Albums</h2>
+        <ul id="albums_list">
+            <!-- Albums will be loaded dynamically -->
+        </ul>
+    </div>
+    
+    <div id="album_info" style="display: none;"> <!-- Hidden until an album is selected -->
+        <div id="album_cover">
+            <img id="cover_image" src="" alt="Album Cover" />
+            <h2 id="album_title"></h2>
+            <h3 id="album_artist"></h3>
+        </div>
+        <div id="album_songs">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Title</th>
+                        <th>Length</th>
+                    </tr>
+                </thead>
+                <tbody id="tracks_table">
+                    <!-- Tracks will be loaded dynamically -->
+                </tbody>
+                <tfoot id="total_length_row" style="display: none;">
+                    <tr>
+                        <td colspan="2"><strong>Total length:</strong></td>
+                        <td class="song_length" id="total_length"><strong></strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <script src="/static/scripts.js"></script> 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            loadAlbums(); // Ensures the function runs only after the page is fully loaded
+        });
+    </script>
+</body>
+</html>

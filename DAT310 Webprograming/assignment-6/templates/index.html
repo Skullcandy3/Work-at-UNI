@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Hjem - Gradebook{% endblock %}
+
+{% block content %}
+<h2>Emner</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Course Code</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in courses %}
+        <tr>
+            <td>
+                <a href="{{ url_for('course_page', course_id=course.id) }}">
+                    {{ course.id }}
+                </a>
+            </td>
+            <td>{{ course.name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Studenter</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Student No</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>
+                <a href="{{ url_for('student_profile', student_no=student.student_no) }}">
+                    {{ student.student_no }}
+                </a>
+            </td>
+            <td>{{ student.name }}</td>
+        </tr>
+        <form action="{{ url_for('delete_student', student_no=student.student_no) }}" method="post" onsubmit="return confirm('Er du sikker på at du vil slette denne studenten?');">
+            <button type="submit">Slett</button>
+        </form>
+        {% endfor %}
+    </tbody>
+</table>
+
+<p>
+    <a href="{{ url_for('add_student') }}">Legg til ny student</a>
+</p>
+<p>
+    <a href="{{ url_for('add_grade') }}">Legg til ny karakter</a>
+</p>
+{% endblock %}

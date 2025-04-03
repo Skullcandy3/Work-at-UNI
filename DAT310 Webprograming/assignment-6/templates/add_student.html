@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Legg til Student{% endblock %}
+
+{% block content %}
+<h2>Legg til ny student</h2>
+<form method="post">
+    <label for="name">Studentnavn:</label>
+    <input type="text" name="name" id="name">
+    <input type="submit" value="Legg til student">
+</form>
+{% endblock %}

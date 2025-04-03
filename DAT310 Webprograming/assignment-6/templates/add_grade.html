@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Legg til Karakter{% endblock %}
+
+{% block content %}
+<h2>Legg til ny karakter</h2>
+<form method="post">
+    <label for="student_no">Student:</label>
+    <select name="student_no" id="student_no">
+        <option value="Select">Select</option>
+        {% for student in students %}
+        <option value="{{ student.student_no }}">{{ student.student_no }} - {{ student.name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="course_id">Emne:</label>
+    <select name="course_id" id="course_id">
+        <option value="Select">Select</option>
+        {% for course in courses %}
+        <option value="{{ course.id }}">{{ course.id }} - {{ course.name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="grade">Karakter:</label>
+    <select name="grade" id="grade">
+        <option value="Select">Select</option>
+        {% for g in ["A", "B", "C", "D", "E", "F"] %}
+        <option value="{{ g }}">{{ g }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <input type="submit" value="Legg til karakter">
+</form>
+{% endblock %}
