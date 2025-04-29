@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <button id="theme-toggle">Toggle Dark Mode</button>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <h2>Create a New Account</h2>
+    <form method="POST" action="{{ url_for('register') }}">
+        <label for="nickname">Nickname:</label><br>
+        <input type="text" name="nickname" required><br><br>
+
+        <label for="gmail">Gmail:</label><br>
+        <input type="email" name="gmail" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" name="password" required><br><br>
+
+        <label for="confirm_password">Confirm Password:</label><br>
+        <input type="password" name="confirm_password" required><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

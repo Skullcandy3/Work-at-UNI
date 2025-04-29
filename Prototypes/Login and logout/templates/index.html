@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome {{ user.nickname }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <button id="theme-toggle">Toggle Dark Mode</button>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <h1>Welcome, {{ user.nickname }}!</h1>
+    <p>Class ID: {{ user.class_id }}</p>
+
+    <video width="640" height="360" autoplay muted loop controls>
+        <source src="{{ url_for('static', filename='videos/movie.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    {% if user.class_id == 2 %}
+    <a href="{{ url_for('admin_panel') }}">Go to Admin Panel</a>
+    {% endif %}
+
+</body>
+<footer>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <p>&copy; 2025 Skullcandy limited</p>
+</footer>
+</html>
