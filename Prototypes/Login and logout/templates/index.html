@@ -7,18 +7,31 @@
 </head>
 <body>
     <button id="theme-toggle">Toggle Dark Mode</button>
-    <div class="wordle-container">
-        <h1>Wordle Game</h1>
-        <div id="game-board"></div>
-        <div id="keyboard"></div>
-        <p id="message"></p>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-</body>
-<footer>
-    <a href="{{ url_for('logout') }}">Logout</a>
+    <h1>Welcome, {{ user.nickname }}!</h1>
+    <p>Class ID: {{ user.class_id }}</p>
+
+    <video width="640" height="360" autoplay muted loop controls>
+        <source src="{{ url_for('static', filename='videos/movie.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     {% if user.class_id == 2 %}
     <a href="{{ url_for('admin_panel') }}">Go to Admin Panel</a>
     {% endif %}
-    <p>&copy; 2025 Skullcandy limited</p>
-</footer>
+
+    <!-- Wordle Game Section -->
+    <div class="wordle-container">
+        <div id="game-board"></div>
+        <div id="keyboard"></div>
+        <p id="result-message"></p>
+    </div>
+
+    <footer>
+        <a href="{{ url_for('logout') }}">Logout</a>
+        <p>&copy; 2025 Skullcandy limited</p>
+    </footer>
+
+    <!-- JavaScript should come at the end for better performance -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
 </html>
