@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="top-bar">
+        <div class="logo">Wordle Game</div>
+        <div class="settings-dropdown">
+            <button class="settings-btn">⚙️ Settings</button>
+            <div class="settings-menu">
+                <button id="theme-toggle">Dark Mode</button>
+                <button id="toggle-colorblind" class="settings-btn">Colorblind Mode</button>
+            </div>
+        </div>
+    </header>
+    <h2>Create a New Account</h2>
+    <form method="POST" action="{{ url_for('register') }}">
+        <label for="nickname">Nickname:</label><br>
+        <input type="text" name="nickname" id="nickname" required><br>
+        <span id="nickname-feedback" style="color: red;"></span><br><br>
+
+        <label for="gmail">Gmail:</label><br>
+        <input type="email" name="gmail" id="gmail" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" name="password" id="password" required><br><br>
+
+        <label for="confirm_password">Confirm Password:</label><br>
+        <input type="password" name="confirm_password" id="confirm_password" required><br><br>
+
+        <input type="submit" value="Register" aria-label="Register">
+    </form>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <footer>
+        <p>&copy; 2025 UiS games limited</p>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

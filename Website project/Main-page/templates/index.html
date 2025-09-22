@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome {{ user.nickname }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="top-bar">
+        <div class="logo">Wordle Game</div>
+        <div class="settings-dropdown">
+            <button class="settings-btn">⚙️ Settings</button>
+            <div class="settings-menu">
+                <button id="theme-toggle">Dark Mode</button>
+                <button id="toggle-colorblind" class="settings-btn">Colorblind Mode</button>
+                <button onclick="openLeaderboard()">Leaderboard</button>
+                {% if user.class_id == 2 %}
+                <a href="{{ url_for('admin_panel') }}">Admin Panel</a>
+                {% endif %}
+                <a href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
+    </header>
+    <!-- Leaderboard -->
+    <div id="leaderboard-modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="close-leaderboard" class="close-btn">&times;</span>
+            <h2>🏆 Leaderboard</h2>
+            <ul id="leaderboard-list"></ul>
+        </div>
+    </div>
+
+    <!-- Wordle Game Content -->
+    <main class="game-wrapper">
+        <p id="result-message"></p>
+        <div id="game-board" class="wordle-container"></div>
+        <div id="keyboard"></div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 UiS games limited</p>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
