@@ -1,0 +1,94 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# This workflow will build, test, sign and package a WPF or Windows Forms desktop application
+# built on .NET Core.
+# To learn how to migrate your existing application to .NET Core,
+# refer to https://docs.microsoft.com/en-us/dotnet/desktop-wpf/migration/convert-project-from-net-framework
+#
+# To configure this workflow:
+#
+# 1. Configure environment variables
+# GitHub sets default environment variables for every workflow run.
+# Replace the variables relative to your project in the "env" section below.
+#
+# 2. Signing
+# Generate a signing certificate in the Windows Application
+# Packaging Project or add an existing signing certificate to the project.
+# Next, use PowerShell to encode the .pfx file using Base64 encoding
+# by running the following Powershell script to generate the output string:
+#
+# $pfx_cert = Get-Content '.\SigningCertificate.pfx' -Encoding Byte
+# [System.Convert]::ToBase64String($pfx_cert) | Out-File 'SigningCertificate_Encoded.txt'
+#
+# Open the output file, SigningCertificate_Encoded.txt, and copy the
+# string inside. Then, add the string to the repo as a GitHub secret
+# and name it "Base64_Encoded_Pfx."
+# For more information on how to configure your signing certificate for
+# this workflow, refer to https://github.com/microsoft/github-actions-for-desktop-apps#signing
+#
+# Finally, add the signing certificate password to the repo as a secret and name it "Pfx_Key".
+# See "Build the Windows Application Packaging project" below to see how the secret is used.
+#
+# For more information on GitHub Actions, refer to https://github.com/features/actions
+# For a complete CI/CD sample to get started with GitHub Action workflows for Desktop Applications,
+# refer to https://github.com/microsoft/github-actions-for-desktop-apps
+name: CampusEats CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-test-and-compose:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      # Build first (fast failure)
+      - name: Restore
+        run: dotnet restore CampusEatsv2/CampusEatsv2.slnx
+
+      - name: Build
+        run: dotnet build CampusEatsv2/CampusEatsv2.slnx --no-restore --configuration Release
+
+      # Start required infrastructure
+      - name: Docker Compose Up
+        if: github.ref == 'refs/heads/main'
+        working-directory : CampusEatsv2
+        run: docker compose up -d --build
+
+      - name: Wait for RabbitMQ
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "Waiting for RabbitMQ..."
+          for i in {1..30}; do
+            if docker exec campuseats_rabbitmq rabbitmq-diagnostics ping; then
+              echo "RabbitMQ is ready"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "RabbitMQ did not become ready in time"
+          exit 1
+
+      # Run tests (integration tests now PASS)
+      - name: Run tests
+        run: dotnet test CampusEatsv2/CampusEatsv2.slnx --no-build --configuration Release
+
+      # Always clean up
+      - name: Docker Compose Down
+        if: always() && github.ref == 'refs/heads/main'
+        working-directory : CampusEatsv2
+        run: docker compose down
