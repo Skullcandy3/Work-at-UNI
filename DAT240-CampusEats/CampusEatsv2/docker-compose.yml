@@ -57,6 +57,9 @@ services:
       RabbitMq__Password: guest
       Smtp__Host: smtp4dev
       Smtp__Port: 25
+      Authentication__Google__ClientId: ${GOOGLE_CLIENT_ID}
+      Authentication__Google__ClientSecret: ${GOOGLE_CLIENT_SECRET}
+
 
     depends_on:
       db:
@@ -85,8 +88,8 @@ services:
       RabbitMq__Password: guest
       Smtp__Host: smtp4dev
       Smtp__Port: 25
-      Authentication__Google__ClientId: 275587108603-ne7uuok74c1b8p49tmorbe1roh818q7n.apps.googleusercontent.com
-      Authentication__Google__ClientSecret: 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
+      Authentication__Google__ClientId: ${GOOGLE_CLIENT_ID}
+      Authentication__Google__ClientSecret: ${GOOGLE_CLIENT_SECRET}
         
 networks:
   internal:
